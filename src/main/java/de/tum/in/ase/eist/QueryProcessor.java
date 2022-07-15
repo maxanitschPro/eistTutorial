@@ -51,7 +51,7 @@ public class QueryProcessor {
     }
 
     List<String> findIntegers(String stringToSearch) {
-        Pattern integerPattern = Pattern.compile("-?\\d+");
+        Pattern integerPattern = Pattern.compile("\\d");
         Matcher matcher = integerPattern.matcher(stringToSearch);
 
         List<String> integerList = new ArrayList<>();

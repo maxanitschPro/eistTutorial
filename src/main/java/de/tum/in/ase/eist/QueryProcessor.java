@@ -45,4 +45,5 @@ public class QueryProcessor {
 
         return integerList;
     }
+
 }

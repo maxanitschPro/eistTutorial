@@ -18,7 +18,7 @@ public class QueryProcessor {
                     "writer in the English language and the world's pre-eminent dramatist.";
         } else if (query.contains("name")) {
            return "Max";
-        } else if (query.contains("plus")){
+        } else if (query.contains("plus")) {
             List<String> list = findIntegers(query);
 
             int sum = 0;
@@ -28,10 +28,26 @@ public class QueryProcessor {
             }
             // TODO extend the programm here
             return String.valueOf(sum);
+        } else if (query.contains("largest")) {
+            List<String> list = findIntegers(query);
+
+            int largestNumber = 0;
+            for (String integer: list) {
+                int currentNumber = Integer.valueOf(integer);
+
+                if (largestNumber == 0) {
+                    largestNumber = currentNumber;
+                }
+
+                if (currentNumber >= largestNumber) {
+                    largestNumber = currentNumber;
+                }
+            }
+
+            return String.valueOf(largestNumber);
         }
 
         return "";
-
     }
 
     List<String> findIntegers(String stringToSearch) {

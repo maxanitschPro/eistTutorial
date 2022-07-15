@@ -2,6 +2,11 @@ package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Service
 public class QueryProcessor {
 
@@ -13,9 +18,31 @@ public class QueryProcessor {
                     "writer in the English language and the world's pre-eminent dramatist.";
         } else if (query.contains("name")) {
            return "Max";
-        } else { // TODO extend the programm here
-            return "";
+        } else if (query.contains("plus")){
+            List<String> list = findIntegers(query);
+
+            int sum = 0;
+            for (String integer: list) {
+                int number = Integer.valueOf(integer);
+                sum += number;
+            }
+            // TODO extend the programm here
+            return String.valueOf(sum);
         }
 
+        return "";
+
+    }
+
+    List<String> findIntegers(String stringToSearch) {
+        Pattern integerPattern = Pattern.compile("-?\\d+");
+        Matcher matcher = integerPattern.matcher(stringToSearch);
+
+        List<String> integerList = new ArrayList<>();
+        while (matcher.find()) {
+            integerList.add(matcher.group());
+        }
+
+        return integerList;
     }
 }

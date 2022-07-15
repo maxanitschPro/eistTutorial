@@ -9,6 +9,7 @@ class QueryProcessorTest {
 
 	private final QueryProcessor queryProcessor = new QueryProcessor();
 
+
 	@Test
 	void testEmptyStringIfCannotProcessQuery() {
 		assertEquals("", queryProcessor.process("test"));
